@@ -1,7 +1,7 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
+import './Styles/globals.css'
+import { Alegreya } from 'next/font/google'
 
-const inter = Inter({ subsets: ['latin'] })
+const alegreya = Alegreya({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -11,7 +11,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={alegreya.className}>{children}</body>
     </html>
   )
 }
