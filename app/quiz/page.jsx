@@ -8,9 +8,9 @@ import Style from "../Styles/Style.module.css";
 const page = () => {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
-  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null);
-  const [checked, setChecked] = useState(false);
-  const [selectedAnswer, setSelectedAnswer] = useState("");
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null); //k answeri k roosh click shode bg begire
+  const [checked, setChecked] = useState(false); //k age answer enthekhab shod, dokme next faal she
+  const [selectedAnswer, setSelectedAnswer] = useState(""); //befahmin answeri k entekhab shode dorost boode ya na
   const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
@@ -71,7 +71,7 @@ const page = () => {
 
         {!showResult ? (
           <div className={Style["q-container"]}>
-            <h2>{questions[activeQuestion].question}</h2>
+            <h2>{question}</h2>
 
             <div className={Style['row-container']}>
               <ul>
