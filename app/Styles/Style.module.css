@@ -129,6 +129,10 @@
     line-height: 2rem;
 }
 
+.content span{
+    font-weight: 600;
+}
+
 .r-container span{
     text-align: center;
     color: #ffdd00;
