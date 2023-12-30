@@ -11,28 +11,34 @@ const page = () => {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null); //k answeri k roosh click shode bg begire
   const [checked, setChecked] = useState(false); //k age answer enthekhab shod, dokme next faal she
   const [selectedAnswer, setSelectedAnswer] = useState(""); //befahmin answeri k entekhab shode dorost boode ya na
+  const [disable,setDisable] = useState(false) //k bad az didane gozine dorost natoone pasokh ro avaz kone
   const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
     wrongAnswers: 0,
   });
 
+
   const { questions } = quiz;
   const { question, answers, correctAnswer, img } = questions[activeQuestion];
+
 
   const onAnswerSelected = (answer, id) => {
     setChecked(true);
     setSelectedAnswerIndex(id);
+    setDisable(true)
 
     if (answer === correctAnswer) {
       setSelectedAnswer(true);
     } else {
       setSelectedAnswer(false);
     }
+
   };
 
   const nextQuestion = () => {
     setSelectedAnswerIndex(null);
+    setDisable(false)
 
     setResult((prev) =>
       selectedAnswer
@@ -81,11 +87,20 @@ const page = () => {
                       key={id}
                       onClick={() => onAnswerSelected(answer, id)}
                       className={`${
-                        selectedAnswerIndex === id
+                        selectedAnswerIndex === id 
                           ? Style["li-selected"]
                           : Style["li-hover"]
-                      }`}
+                      }` 
+                    
+                    }
+
+                   style={{
+                           backgroundColor: selectedAnswerIndex === id && selectedAnswer !== true && 'red'
+                           || selectedAnswerIndex === id && selectedAnswer === true && 'green',
+                           pointerEvents: disable && 'none',
+                          }}
                     >
+                      
                       {answer}
                     </li>
                   );
@@ -107,7 +122,6 @@ const page = () => {
                 className={Style["btn-disabled"]}
                 disabled
               >
-                {" "}
                 {activeQuestion === questions.length - 1 ? "Finish" : "Next"}
               </button>
             )}
