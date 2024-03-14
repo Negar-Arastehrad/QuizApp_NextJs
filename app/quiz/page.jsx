@@ -5,7 +5,7 @@ import Image from "next/image.js";
 import Friends from "../../public/Img/friends.png";
 import Style from "../Styles/Style.module.css";
 
-export default function page() {
+export default function Page() {
   const [activeQuestion, setActiveQuestion] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null); //k answeri k roosh click shode bg begire
