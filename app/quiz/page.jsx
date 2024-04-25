@@ -11,34 +11,31 @@ const page = () => {
   const [selectedAnswerIndex, setSelectedAnswerIndex] = useState(null); //k answeri k roosh click shode bg begire
   const [checked, setChecked] = useState(false); //k age answer enthekhab shod, dokme next faal she
   const [selectedAnswer, setSelectedAnswer] = useState(""); //befahmin answeri k entekhab shode dorost boode ya na
-  const [disable,setDisable] = useState(false) //k bad az didane gozine dorost natoone pasokh ro avaz kone
+  const [disable, setDisable] = useState(false); //k bad az didane gozine dorost natoone pasokh ro avaz kone
   const [result, setResult] = useState({
     score: 0,
     correctAnswers: 0,
     wrongAnswers: 0,
   });
 
-
   const { questions } = quiz;
   const { question, answers, correctAnswer, img } = questions[activeQuestion];
-
 
   const onAnswerSelected = (answer, id) => {
     setChecked(true);
     setSelectedAnswerIndex(id);
-    setDisable(true)
+    setDisable(true);
 
     if (answer === correctAnswer) {
       setSelectedAnswer(true);
     } else {
       setSelectedAnswer(false);
     }
-
   };
 
   const nextQuestion = () => {
     setSelectedAnswerIndex(null);
-    setDisable(false)
+    setDisable(false);
 
     setResult((prev) =>
       selectedAnswer
@@ -79,7 +76,7 @@ const page = () => {
           <div className={Style["q-container"]}>
             <h2>{question}</h2>
 
-            <div className={Style['row-container']}>
+            <div className={Style["row-container"]}>
               <ul>
                 {answers.map((answer, id) => {
                   return (
@@ -87,20 +84,21 @@ const page = () => {
                       key={id}
                       onClick={() => onAnswerSelected(answer, id)}
                       className={`${
-                        selectedAnswerIndex === id 
+                        selectedAnswerIndex === id
                           ? Style["li-selected"]
                           : Style["li-hover"]
-                      }` 
-                    
-                    }
-
-                   style={{
-                           backgroundColor: selectedAnswerIndex === id && selectedAnswer !== true && 'red'
-                           || selectedAnswerIndex === id && selectedAnswer === true && 'green',
-                           pointerEvents: disable && 'none',
-                          }}
+                      }`}
+                      style={{
+                        backgroundColor:
+                          (selectedAnswerIndex === id &&
+                            selectedAnswer !== true &&
+                            "red") ||
+                          (selectedAnswerIndex === id &&
+                            selectedAnswer === true &&
+                            "green"),
+                        pointerEvents: disable && "none",
+                      }}
                     >
-                      
                       {answer}
                     </li>
                   );
@@ -133,9 +131,11 @@ const page = () => {
                 Overall <span className={Style.mainSpan}>:</span>{" "}
                 {Math.round((result.score / 36) * 100)} %
               </h2>
-              <button onClick={() => document.location.reload()}>
-                Restart
-              </button>
+              <div className={Style["btn-container"]}>
+                <button onClick={() => document.location.reload()}>
+                  Restart
+                </button>
+              </div>
             </div>
 
             <div className={Style.line}></div>

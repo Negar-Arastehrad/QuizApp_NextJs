@@ -88,9 +88,7 @@
 }
 
 .top{
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
+    
 }
 
 .r-container button{
@@ -99,6 +97,10 @@
     font-size: 1.4rem;
     font-weight: bold;
     transition: .3s ease;
+}
+
+.r-container .btn-container{
+    text-align: center;
 }
 
 .r-container button:hover{
